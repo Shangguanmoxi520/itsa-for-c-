@@ -1,0 +1,18 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    int a, b;
+    cin >> a >> b;
+    cout << a << "+" << b << "=" << a + b << endl;
+    cout << a << "*" << b << "=" << a * b << endl;
+    cout << a << "-" << b << "=" << a - b << endl;
+    int q = a / b, r = a%b;
+    if(r<0){
+      q += b<0?1:-1;
+      r += b>0?b:-b;
+    }
+    cout << a << "/" << b << "=" << q << "..." << r << endl;
+    return 0;
+}
