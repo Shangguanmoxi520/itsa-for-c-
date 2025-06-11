@@ -1,0 +1,17 @@
+#include <iostream>
+using namespace std;
+
+int main(void)
+{
+	double a;
+    cin >> a;
+    a *= a;
+    int digit = ((int)(a*100))%10;
+    a -= 0.01 * digit;
+    if(digit >= 5) a += 0.1;
+    cout.setf(ios::fixed);
+    cout.setf(ios::showpoint);
+    cout.precision(1);
+    cout << a << endl;
+	return 0;
+}
