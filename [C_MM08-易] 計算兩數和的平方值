@@ -1,0 +1,11 @@
+#include <iostream>
+using namespace std;
+
+int main(void)
+{
+    int a, b;
+    cin >> a >> b;
+    int ad = a + b;
+    cout << ad*ad << endl;
+	return 0;
+}
