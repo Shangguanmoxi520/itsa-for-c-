@@ -1,0 +1,24 @@
+#include <iostream>
+using namespace std;
+
+int main(void)
+{
+	int a, b, c, d;
+    cin >> a >> b >> c >> d;
+    a = c-a;
+    b = d-b;
+    a = a*60 + b;
+    a -= a%30;
+    int result = 0;
+    if(a <= 120){
+        result += a;
+    }
+    else if(a < 240){
+        result += (a-120)/30*40 + 120;
+    }
+    else{
+        result += (a-240)/30*60 + 280;
+    }
+    cout << result << endl;
+	return 0;
+}
