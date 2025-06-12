@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+
+int main(void)
+{
+	double a, b;
+    cin >> a >> b;
+    double result;
+    if(a > 120){
+        result = (a-120)*b*1.66 + b*139.8;
+    }
+    else if(a > 60){
+        result = (a-60)*b*1.33 + b*60;
+    }
+    else{
+        result = a*b;
+    }
+    cout.setf(ios::fixed);
+    cout.setf(ios::showpoint);
+    cout.precision(1);
+    int digit = ((int)result*100)%10;
+    result -= digit*0.01;
+    cout << result << endl;
+	return 0;
+}
