@@ -1,0 +1,63 @@
+#include <iostream>
+#include <vector>
+#include <stack>
+using namespace std;
+
+int main(void)
+{
+	int m, n;
+    cin >> m >> n;
+    vector<int> lineSize(m+1, 0);
+    for(int i = 1; i <= m; i++)
+        cin >> lineSize[i];
+    vector<vector<int>> big(m+1, vector<int>(n+1, 0));
+    for(int i = 1; i <= m; i++){
+        for(int j = 1; j <= lineSize[i]; j++){
+            int tmp;
+            cin >> tmp;
+            if(j > n) continue;
+            big[i][j] = big[i][j-1] + tmp;
+        }
+    }
+
+    // from 1 to ith big line choosing j small lines, find max length
+    // final answer = dp[m][n]
+    vector<vector<int>> dp(m+1, vector<int>(n+1, 0));
+    vector<vector<int>> dp_id(m+1, vector<int>(n+1, 0));
+    for(int i = 1; i <= m; i++){
+        for(int j = 1; j <= n; j++){
+            int maxVal = dp[i-1][j];
+            int maxId = 0;
+            for(int k = 0; k <= j && k <= lineSize[i]; k++){
+                if(big[i][k] + dp[i-1][j-k] > maxVal){
+                    maxVal = big[i][k] + dp[i-1][j-k];
+                    maxId = k;
+                }
+            }
+            dp[i][j] = maxVal;
+            dp_id[i][j] = maxId;
+        }
+    }
+    cout << dp[m][n] << endl;
+
+    // back trace
+    int x = n;
+    stack<pair<int, int>> lineChoose; // <ith big, j lines>
+    for(int i = m; i >= 1; i--){
+        int id = dp_id[i][x];
+        if(id != 0){
+            lineChoose.push(make_pair(i,id));
+            x -= id;
+        }
+    }
+    while(lineChoose.size() > 1){
+        cout << "(" << lineChoose.top().first
+            << "," << lineChoose.top().second << ") ";
+        lineChoose.pop();
+    }
+    if(!lineChoose.empty()){
+        cout << "(" << lineChoose.top().first
+                << "," << lineChoose.top().second << ")" << endl;
+    }
+	return 0;
+}
