@@ -1,0 +1,18 @@
+#include <iostream>
+using namespace std;
+int tot(int, int);
+int main(void)
+{
+	int a;
+    cin >> a;
+    int result = 0;
+    result += tot(6,a);
+    result -= tot(12,a);
+    cout << result << endl;
+	return 0;
+}
+
+int tot(int a, int n){
+    int h = n/a;
+    return a*(h+1)*h/2;
+}
