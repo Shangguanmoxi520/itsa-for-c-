@@ -1,0 +1,27 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main(void)
+{
+	int a;
+    cin >> a;
+    vector<int> small, big;
+    small.push_back(1);
+    big.push_back(a);
+    for(int i = 2; i < big.back(); i++){
+        if(a%i == 0){
+            small.push_back(i);
+            if(i != a/i) big.push_back(a/i);
+        }
+    }
+    reverse(big.begin(), big.end());
+    for(int i = 0; i < small.size(); i++)
+        cout << small[i] << " ";
+    for(int i = 0; i < big.size() - 1; i++){
+        cout << big[i] << " ";
+    }
+    cout << big.back() << endl;
+	return 0;
+}
