@@ -1,0 +1,15 @@
+#include <iostream>
+using namespace std;
+
+int main(void)
+{
+	int a;
+    cin >> a;
+    int last = a/35;
+    for(int i = 1; i <= last; i++){
+        cout << 35*i;
+        if(i < last) cout << " ";
+    }
+    cout << endl;
+	return 0;
+}
