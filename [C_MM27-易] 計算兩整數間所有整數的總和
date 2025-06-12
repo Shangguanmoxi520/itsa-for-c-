@@ -1,0 +1,11 @@
+#include <iostream>
+using namespace std;
+
+int main(void)
+{
+	int a, b;
+    cin >> a >> b;
+    int height = a>b?a-b+1:b-a+1;
+    cout << (a+b)*height/2 << endl;
+	return 0;
+}
