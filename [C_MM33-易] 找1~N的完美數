@@ -1,0 +1,18 @@
+#include <iostream>
+using namespace std;
+
+int main(void)
+{
+	long long pfList[] = {
+        6, 28, 496, 8128, 33550336, 8589869056, 137438691328, 2305843008139952128
+    };
+    long long a;
+    cin >> a;
+    for(int i = 0; i < 8; i++){
+        if(a >= pfList[i]) cout << pfList[i];
+        if(a < pfList[i+1]) break;
+        else cout << " ";
+    }
+    cout << endl;
+	return 0;
+}
